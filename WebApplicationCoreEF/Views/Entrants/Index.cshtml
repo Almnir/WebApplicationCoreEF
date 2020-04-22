@@ -1,0 +1,138 @@
+﻿@model IEnumerable<WebApplicationCoreEF.Models.Entrant>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Участники</h1>
+
+<p>
+    <a asp-action="Create">Добавить нового</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomInformation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Snils)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobilePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonLinkDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntrantGuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FactAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdentityDocument)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Institution)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomInformation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Snils)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobilePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonLinkDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntrantGuid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FactAddress.AddressId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentityDocument.DocumentSpecificData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Institution.Ogrn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.NormSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationAddress.AddressId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EntrantId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EntrantId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EntrantId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
