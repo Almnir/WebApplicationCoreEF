@@ -13,14 +13,20 @@ namespace WebApplicationCoreEF.Views
     {
         private readonly gvuz_start_openContext _context;
 
-        public EntrantsController(gvuz_start_openContext context)
+        private readonly IMyDependency _myDependency;
+
+        public EntrantsController(gvuz_start_openContext context, IMyDependency myDependency)
         {
             _context = context;
+            _myDependency = myDependency;
         }
 
         // GET: Entrants
         public async Task<IActionResult> Index()
         {
+            await _myDependency.WriteMessage(
+            "Woohoo message!");
+
             var gvuz_start_openContext = _context.Entrant.
                 Include(e => e.FactAddress).
                 Include(e => e.Gender).
