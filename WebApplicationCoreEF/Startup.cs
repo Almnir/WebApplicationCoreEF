@@ -24,7 +24,6 @@ namespace WebApplicationCoreEF
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddScoped<IMyDependency, MyDependency>();
             services.AddDbContext<Models.
                 gvuz_start_openContext>(options => 
             options.UseSqlServer("Data Source=10.0.18.3;Initial Catalog=gvuz_start_open;Persist Security Info=True;User ID=ra;Password=Njkmrjcdjb"));
