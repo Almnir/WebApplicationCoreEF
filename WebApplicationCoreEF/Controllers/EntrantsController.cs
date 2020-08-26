@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using WebApplicationCoreEF.Models;
 
 namespace WebApplicationCoreEF.Views
@@ -13,20 +12,17 @@ namespace WebApplicationCoreEF.Views
     {
         private readonly gvuz_start_openContext _context;
 
-        private readonly IMyDependency _myDependency;
+        private readonly ILogger<EntrantsController> _logger;
 
-        public EntrantsController(gvuz_start_openContext context, IMyDependency myDependency)
+        public EntrantsController(gvuz_start_openContext context, ILogger<EntrantsController> logger)
         {
             _context = context;
-            _myDependency = myDependency;
+            _logger = logger;
         }
 
         // GET: Entrants
         public async Task<IActionResult> Index()
         {
-            await _myDependency.WriteMessage(
-            "Woohoo message!");
-
             var gvuz_start_openContext = _context.Entrant.
                 Include(e => e.FactAddress).
                 Include(e => e.Gender).
